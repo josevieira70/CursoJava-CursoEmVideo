@@ -1,5 +1,5 @@
 package exercicioaula4;
-
+//mostrar configurações do sistema na tela do java
 import java.awt.Dimension;
 import java.awt.Toolkit;
 import java.util.Date;
