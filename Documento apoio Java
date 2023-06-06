@@ -1,9 +1,0 @@
-Identificar no Java
-
-Primeira letra Maiuscula e o restante camelcase identifica uma Classe ou Interface Ex: AlunosCursoEmVideo
-
-Primeira Letra em minusculo e o restante camelcase identifica um atributo, váriavel, método Ex: atributo -> nomeAluno, variável -> mediaPrimeiroBimestre, método -> lancarNotaAluno
-
-Todas as letras em minusculo identifica o nome do pacote Ex: alunoscursoemvideo
-
-Todas as letras Maiusculas identifica uma constante EX: VALOR_DE_PI
