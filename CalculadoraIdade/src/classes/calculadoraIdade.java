@@ -4,6 +4,8 @@
  */
 package classes;
 
+import java.util.Calendar;
+
 /**
  *
  * @author jose
@@ -32,12 +34,15 @@ public class calculadoraIdade extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         lblIdade = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        lblAnoAtual = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel1.setText("Ano de Nascimento");
 
-        txtAN.setModel(new javax.swing.SpinnerNumberModel(1500, 1500, 5000, 1));
+        txtAN.setModel(new javax.swing.SpinnerNumberModel(1900, 1900, 5000, 1));
         txtAN.setAutoscrolls(true);
 
         btnCalc.setText("Calcular");
@@ -47,13 +52,25 @@ public class calculadoraIdade extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setText("Idade :");
+        jLabel2.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jLabel2.setText("No final deste ano, sua idade será :");
 
         lblIdade.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
-        lblIdade.setForeground(new java.awt.Color(255, 0, 51));
-        lblIdade.setText("0");
+        lblIdade.setForeground(new java.awt.Color(51, 51, 255));
+        lblIdade.setText("????");
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/usuario.png"))); // NOI18N
+
+        jLabel3.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        jLabel3.setText("Ano Atual:");
+
+        lblAnoAtual.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        lblAnoAtual.setForeground(new java.awt.Color(0, 0, 255));
+        lblAnoAtual.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                lblAnoAtualPropertyChange(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -62,36 +79,45 @@ public class calculadoraIdade extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnCalc, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnCalc, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel2))
                         .addGap(18, 18, 18)
                         .addComponent(lblIdade))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(txtAN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtAN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(lblAnoAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4)
-                .addGap(126, 126, 126))
+                .addGap(38, 38, 38))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtAN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnCalc)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(lblIdade))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel4)
-                .addGap(0, 16, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(lblAnoAtual, javax.swing.GroupLayout.PREFERRED_SIZE, 18, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel1)
+                            .addComponent(txtAN, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(25, 25, 25)
+                        .addComponent(btnCalc)
+                        .addGap(26, 26, 26)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(lblIdade)))
+                    .addComponent(jLabel4))
+                .addGap(0, 10, Short.MAX_VALUE))
         );
 
         pack();
@@ -99,10 +125,21 @@ public class calculadoraIdade extends javax.swing.JFrame {
 
     private void btnCalcActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCalcActionPerformed
         
+        Calendar cal = Calendar.getInstance();
+        int ano = cal.get(Calendar.YEAR);
         int an = Integer.parseInt(txtAN.getValue().toString());
-        int id = 2023 - an;
+        int id = ano - an;
         lblIdade.setText(Integer.toString(id));
+        
+        
     }//GEN-LAST:event_btnCalcActionPerformed
+
+    private void lblAnoAtualPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_lblAnoAtualPropertyChange
+        Calendar cal2 = Calendar.getInstance();
+        int ano2 = cal2.get(Calendar.YEAR);
+        lblAnoAtual.setText(Integer.toString(ano2));
+        
+    }//GEN-LAST:event_lblAnoAtualPropertyChange
 
     /**
      * @param args the command line arguments
@@ -143,7 +180,9 @@ public class calculadoraIdade extends javax.swing.JFrame {
     private javax.swing.JButton btnCalc;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel lblAnoAtual;
     private javax.swing.JLabel lblIdade;
     private javax.swing.JSpinner txtAN;
     // End of variables declaration//GEN-END:variables
